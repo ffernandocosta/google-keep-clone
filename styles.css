@@ -29,3 +29,105 @@ header {
     padding-top: 4px;
     padding-left: 4px;
 }
+
+/* FORM STYLES */
+#form-container {
+    border-radius: 8px;
+    border: 0.5px solid rgba(255,255,255,0.6);
+    margin: 32px auto 16px auto;
+    max-width: 496px;
+    transition-duration: 0.218s;
+    transition-property: background, border, opacity, box-shadow, transform;
+    transition-timing-function: ease-in;    
+}
+  
+#form {
+    position: relative;
+    border: none;
+    margin: 1px;
+    border-radius: 8px;
+    transition-duration: 0.218s;
+    transition-property: background, border, opacity, box-shadow, transform;
+    transition-timing-function: ease-in;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+#form:focus,
+  input:focus {
+    outline: none;
+}
+  
+#form-buttons {
+    display: none;
+    text-align: right;
+}
+  
+#submit-button,
+#form-close-button {
+    color:#e8eaed;
+    margin: 0.3em 0.3em;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: 0.01785714em;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    height: 36px;
+    padding: 8px 24px;
+    border-radius: 4px;
+    border-color: transparent !important;
+    background: transparent;
+    cursor: pointer;
+}
+  
+#submit-button:hover,
+#form-close-button:hover {
+    filter: brightness(95%);
+    background-color: rgb(154, 160, 166, 0.04);
+}
+  
+#notes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+  
+#note-text {
+    width: calc(100% - 26px);
+    min-height: 43px;
+    margin: 0 5px;
+    padding: 10px 10px;
+    font-size: 1.20rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0.00625em;
+    border: 0;
+    overflow: hidden;
+    position: relative;
+    background-color: #202124;
+    color:#e8eaed;
+}
+
+#note-text::placeholder {
+    font-weight: 600;
+}
+
+#note-title {
+    display: none;
+    width: calc(100% - 26px);
+    min-height: 43px;
+    margin: 0 5px;
+    padding: 10px 10px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    border: 0;
+    background-color: #202124;
+    color:#e8eaed;
+}
+
+#note-title::placeholder {
+    font-weight: 600;
+}
