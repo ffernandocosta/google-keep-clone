@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Keep</title>
+    <script src="https://kit.fontawesome.com/36e5270a21.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,600&display=swap"></link>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="modal">
+        <div class="modal-content">
+          <input class="modal-title" placeholder="Title" type="text">
+          <input class="modal-text" placeholder="Take a note..." type="text">
+          <span class="modal-close-button">Close</span>
+        </div>
+    </div>
     <main>
         <header>
             <img class="header-logo" src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png">
@@ -24,6 +32,13 @@
                </div>
             </form>              
         </div>
+        <div id="notes"></div>
+        <div id="color-tooltip">
+            <div class="color-option" data-color="#fff" id="white"></div>
+            <div class="color-option" data-color="#d7aefb" id="purple"></div>
+            <div class="color-option" data-color="#fbbc04" id="orange"></div>
+            <div class="color-option" data-color="#a7ffeb" id="teal"></div>
+          </div>
     </main>
     <script src="app.js"></script>
 </body>
