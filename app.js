@@ -15,6 +15,7 @@ class App {
         this.$modalTitle = document.querySelector(".modal-title");
         this.$modalText = document.querySelector(".modal-text");
         this.$modalCloseButton = document.querySelector('.modal-close-button');
+        this.$colorTooltip = document.querySelector('#color-tooltip');
 
         this.addEventListeners();
     }
@@ -25,6 +26,29 @@ class App {
             this.selectNote(event);
             this.openModal(event);
         });
+
+        document.body.addEventListener('mouseover', event => {
+            this.openTooltip(event);  
+        });
+
+        document.body.addEventListener('mouseout', event => {
+            this.closeTooltip(event);  
+        });
+
+        this.$colorTooltip.addEventListener('mouseover', function() {
+            this.style.display = 'flex';  
+        });
+          
+        this.$colorTooltip.addEventListener('mouseout', function() {
+            this.style.display = 'none'; 
+        });
+
+        this.$colorTooltip.addEventListener('click', event => {
+            const color = event.target.dataset.color;
+            if (color) {
+                this.editNoteColor(color);
+            }
+        })
 
         this.$form.addEventListener('submit', event => {
             event.preventDefault();
@@ -76,6 +100,8 @@ class App {
     }
 
     openModal(event) {
+        if (event.target.matches('.toolbar-delete')) return;
+        
         if (event.target.closest('.note')) {
             this.$modal.classList.toggle('open-modal');
             this.$modalTitle.value = this.title;
@@ -86,6 +112,21 @@ class App {
     closeModal(event) {
         this.editNote();
         this.$modal.classList.toggle('open-modal');
+    }
+
+    openTooltip(event) {
+        if (!event.target.matches('.toolbar-color')) return;
+        this.id = event.target.dataset.id;
+        const noteCoords = event.target.getBoundingClientRect();
+        const horizontal = noteCoords.left - 55;
+        const vertical = window.scrollY - 92;
+        this.$colorTooltip.style.transform = `translate(${horizontal}px, ${vertical}px)`;
+        this.$colorTooltip.style.display = 'flex';
+    }
+
+    closeTooltip(event) {
+        if (!event.target.matches('.toolbar-color')) return;
+        this.$colorTooltip.style.display = 'none';  
     }
 
     addNote({ title, text }) {
@@ -109,6 +150,13 @@ class App {
         this.displayNotes();
     }
 
+    editNoteColor(color) {
+        this.notes = this.notes.map(note => 
+            note.id === Number(this.id) ? { ...note, color } : note
+        );
+        this.displayNotes();
+    }
+
     selectNote(event) {
         const $selectedNote = event.target.closest('.note');
         if (!$selectedNote) return;
@@ -125,8 +173,8 @@ class App {
                 <div class="note-text">${note.text}</div>
                 <div class="toolbar-container">
                     <div class="toolbar">
-                        <i class="fa-solid fa-trash toolbar-delete"></i>
-                        <i class="fa-solid fa-palette toolbar-color"></i>
+                        <i class="fa-solid fa-trash toolbar-delete" data-id="${note.id}"></i>
+                        <i class="fa-solid fa-palette toolbar-color" data-id="${note.id}"></i>
                     </div>
                 </div>
             </div>
