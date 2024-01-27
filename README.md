@@ -28,7 +28,8 @@ Os usuários devem ser capazes de:
 
 ### Screenshot
 
-//
+![image](https://github.com/ffernandocosta/google-keep-clone/assets/70672573/94851d11-0126-48ae-8d5c-3047a8d555e6)
+
 
 ### Links
 
@@ -92,7 +93,8 @@ Users should be able to:
 
 ### Screenshot
 
-//
+![image](https://github.com/ffernandocosta/google-keep-clone/assets/70672573/9df9765d-7889-4d91-ae9e-89adc86b3e68)
+
 
 ### Links
 
@@ -108,7 +110,7 @@ Users should be able to:
 
 ### What I learned
 
-#### Object Oriented Programmin
+#### Object Oriented Programming
 
 - Classes
 - Constructor methods
